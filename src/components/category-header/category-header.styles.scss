@@ -1,0 +1,35 @@
+.category-header {
+  position: relative;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 35vw;
+  height: 85vh;
+  background-color: rgb(231, 231, 231);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    color: #fff;
+    text-align: center;
+
+    .heading {
+      font-size: 1.1rem;
+      letter-spacing: 0.7px;
+      font-weight: 400;
+    }
+
+    .subheading {
+      font-size: 2rem;
+      line-height: 2.15rem;
+      font-weight: 400;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      margin-top: 2rem;
+    }
+  }
+}

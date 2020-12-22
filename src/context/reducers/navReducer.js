@@ -1,4 +1,9 @@
-import { CART_SIDEBAR, SEARCH_SHOW, SET_MOBILE_MENU } from "../action.types";
+import {
+  CART_SIDEBAR,
+  SEARCH_SHOW,
+  SET_MOBILE_SEARCH,
+  SET_MOBILE_MENU,
+} from "../action.types";
 
 export const navReducer = (state, action) => {
   switch (action.type) {
@@ -15,11 +20,19 @@ export const navReducer = (state, action) => {
         isSearchActive: state.isSearchActive === "" ? action.payload : "",
       };
 
-    case SET_MOBILE_MENU:
+    case SET_MOBILE_SEARCH:
       return {
         ...state,
         searchSideBarMobile:
           state.searchSideBarMobile === "" ? action.payload : "",
+        menuSidebarMobile: "",
+      };
+
+    case SET_MOBILE_MENU:
+      return {
+        ...state,
+        menuSidebarMobile: state.menuSidebarMobile === "" ? action.payload : "",
+        searchSideBarMobile: "",
       };
 
     default:

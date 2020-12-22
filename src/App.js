@@ -52,6 +52,7 @@ import CustomerServicesPage from "./pages/customerServicePage/customerServicepag
 import MyAccounPage from "./pages/myAccountPage/MyAccounPage.component";
 import Login from "./components/login/Login.component";
 import Signup from "./components/signup/Signup.component";
+import MobileSearchSidebar from "./components/mobile-search-sidebar/MobileSearchSidebar.component";
 import MobileMenuSidebar from "./components/mobile-menu-sidebar/MobileMenuSidebar.component";
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
     isCardSideBarActive: "",
     isSearchActive: "",
     searchSideBarMobile: "",
+    menuSidebarMobile: "",
   });
 
   console.log(navState);
@@ -146,6 +148,7 @@ function App() {
               <Navbar />
               <CartSidebar />
               <Search />
+              <MobileSearchSidebar />
               <MobileMenuSidebar />
               <div className={`overlay ${navState.isCartSideBarActive}`}></div>
             </NavContext.Provider>

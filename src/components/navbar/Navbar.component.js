@@ -8,6 +8,7 @@ import { NavContext } from "../../context/Context";
 import {
   CART_SIDEBAR,
   SEARCH_SHOW,
+  SET_MOBILE_SEARCH,
   SET_MOBILE_MENU,
 } from "../../context/action.types";
 
@@ -40,17 +41,29 @@ export default function Navbar() {
         navState.searchSideBarMobile !== undefined
           ? navState.searchSideBarMobile
           : null
+      }${
+        navState.menuSidebarMobile !== undefined
+          ? navState.menuSidebarMobile
+          : null
       }`}
     >
       <div className="menu-and-search">
-        <div className="menu-icon">
+        <div
+          className="menu-icon"
+          onClick={() => {
+            navStateDispatch({
+              type: SET_MOBILE_MENU,
+              payload: "active",
+            });
+          }}
+        >
           <AiOutlineMenu />
         </div>
         <div
           className="search-icon"
           onClick={() => {
             navStateDispatch({
-              type: SET_MOBILE_MENU,
+              type: SET_MOBILE_SEARCH,
               payload: "active",
             });
           }}

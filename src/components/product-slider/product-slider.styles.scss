@@ -6,18 +6,20 @@
     color: #202020;
     margin: 4rem 2rem 2rem 2rem;
   }
+
   .owl-nav {
     position: absolute;
     left: 95%;
-    top: 96%;
+    top: 94%;
     font-size: 2rem;
     display: flex;
 
     .owl-prev,
     .owl-next {
       outline: none;
+
       span {
-        color: rgb(177, 177, 177);
+        color: #202020;
         margin-left: 1rem;
       }
     }

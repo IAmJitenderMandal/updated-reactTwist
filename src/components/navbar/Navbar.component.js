@@ -4,16 +4,17 @@ import "./navbar.styles.scss";
 // call custom hook useViewPort
 import useViewPort from "../../custom-hooks/useViewPort";
 
-import { NavContext } from "../../context/Context";
+import { NavContext, AppContext } from "../../context/Context";
+
 import {
   CART_SIDEBAR,
   SEARCH_SHOW,
   SET_MOBILE_SEARCH,
   SET_MOBILE_MENU,
+  DISABLE_MOBILE_MENU,
 } from "../../context/action.types";
 
 import { Link } from "react-router-dom";
-
 import { BiSearch } from "react-icons/bi";
 import { CgShoppingBag } from "react-icons/cg";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -28,12 +29,35 @@ export default function Navbar() {
     }
   };
 
-  window.addEventListener("scroll", changeBackground);
   const [bar, setBar] = useState("hidden");
   const [navbar, setNavbar] = useState(false);
   const { navState, navStateDispatch } = useContext(NavContext);
+  const { appState } = useContext(AppContext);
   const { width } = useViewPort();
   const breakPoint = 1200;
+  const navLinks = appState.navLinks;
+  const [widthMobileDisable, setWidthMobileDisable] = useState(
+    window.innerWidth
+  );
+  const disbleMobileSidebar = () => {
+    setWidthMobileDisable(window.innerWidth);
+  };
+
+  useEffect(() => {
+    if (widthMobileDisable > 1200) {
+      navStateDispatch({
+        type: DISABLE_MOBILE_MENU,
+        payload: "",
+      });
+    }
+    window.addEventListener("scroll", changeBackground);
+    window.addEventListener("resize", disbleMobileSidebar);
+
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+      window.removeEventListener("resize", disbleMobileSidebar);
+    };
+  }, [widthMobileDisable]);
 
   return width < breakPoint ? (
     <div
@@ -45,7 +69,7 @@ export default function Navbar() {
         navState.menuSidebarMobile !== undefined
           ? navState.menuSidebarMobile
           : null
-      }`}
+      } ${navbar ? "navbar active" : "navbar"} `}
     >
       <div className="menu-and-search">
         <div
@@ -115,20 +139,21 @@ export default function Navbar() {
         </div>
         <div className="nav-links">
           <div className="list">
-            <li className="link">
-              <Link to="/pages/baby-bottles">Baby Bottles</Link>
-            </li>
-            <li className="link">
-              <Link to="/pages/teether-and-peciefiers">
-                Teethers & Peciefiers
-              </Link>
-            </li>
-            <li className="link">
-              <Link to="/pages/sippy-cups">Sippy Cups</Link>
-            </li>
-            <li className="link">
-              <Link to="/pages/squeeze-bag">Squeeze Bags</Link>
-            </li>
+            {navLinks !== undefined
+              ? navLinks.map((linkObj, index) => {
+                  if (
+                    linkObj.urlString.toLowerCase() !== "home".toLowerCase()
+                  ) {
+                    return (
+                      <li className="link" key={index}>
+                        <Link to={`/pages/${linkObj.urlString}`}>
+                          {linkObj.category_name}
+                        </Link>
+                      </li>
+                    );
+                  }
+                })
+              : null}
           </div>
         </div>
         <div className="action-icons">

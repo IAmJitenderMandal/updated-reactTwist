@@ -10,7 +10,9 @@ export default function CustomerServiceHero() {
           <div className="welcome-text">Welcome to our customer service</div>
           <div className="email">SERVICE@TWISTSHAKE.COM</div>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <h2 className="hero-text">Welcome to our customer service</h2>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function OrdersPage() {
   return (
-    <div className="orders">
+    <div className="orders" id="dashboard">
       <div className="section-title">Recent Orders</div>
       <div className="data-table">
         <table>

@@ -2,7 +2,6 @@ import React from "react";
 import "./full-width-img.styles.scss";
 
 import { GoPlusSmall } from "react-icons/go";
-
 import RoundBadge from "../round-badge/RoundBadge.component";
 
 export default function FullWidthCard(props) {

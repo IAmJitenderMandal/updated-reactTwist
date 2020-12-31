@@ -1,19 +1,23 @@
-.mobile-menu-sidebar {
+.mobile-search-sidebar {
   padding: 1.2rem;
   background-color: #fff;
   position: fixed;
   flex-direction: column;
   transform: translateX(-100%);
+  display: none;
   top: 50px;
   left: 0px;
+  padding-bottom: 2rem;
   z-index: 13000;
   height: 100vh;
   width: 100%;
   transition: 0.3s transform;
+  overflow-y: scroll;
 
   &.active {
     background: #ffffff;
     transform: translateX(0);
+    display: block;
   }
 
   .search-input {

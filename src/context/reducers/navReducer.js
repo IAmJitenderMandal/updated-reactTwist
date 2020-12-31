@@ -3,6 +3,7 @@ import {
   SEARCH_SHOW,
   SET_MOBILE_SEARCH,
   SET_MOBILE_MENU,
+  DISABLE_MOBILE_MENU,
 } from "../action.types";
 
 export const navReducer = (state, action) => {
@@ -33,6 +34,14 @@ export const navReducer = (state, action) => {
         ...state,
         menuSidebarMobile: state.menuSidebarMobile === "" ? action.payload : "",
         searchSideBarMobile: "",
+      };
+
+    case DISABLE_MOBILE_MENU:
+      console.log("enter");
+      return {
+        ...state,
+        menuSidebarMobile: action.payload,
+        searchSideBarMobile: action.payload,
       };
 
     default:

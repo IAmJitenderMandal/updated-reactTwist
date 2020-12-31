@@ -1,11 +1,9 @@
 .login {
-  height: 100vh;
+  height: 110vh;
   position: relative;
-  background-image: linear-gradient(
-      90deg,
+  background-image: linear-gradient(90deg,
       rgba(0, 0, 0, 0.41) 0%,
-      rgba(0, 0, 0, 0.4066001400560224) 100%
-    ),
+      rgba(0, 0, 0, 0.4066001400560224) 100%),
     url("https://media.twistshake.com/2020/03/25095624/DSC8622.jpg?q=70&fit=clip&w=2000&auto=format");
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -20,6 +18,7 @@
     .login-container {
       max-width: 500px;
       width: 40vw;
+      margin-top: 4rem;
       padding-top: 2rem;
       padding-bottom: 2rem;
       background-color: #fff;
@@ -35,6 +34,7 @@
     .form {
       width: 70%;
       margin: auto;
+
       .remember-user {
         display: flex;
         align-items: center;
@@ -64,6 +64,7 @@
         font-size: 0.9rem;
         display: flex;
         align-items: center;
+
         span {
           font-weight: 400;
           display: inline-block;

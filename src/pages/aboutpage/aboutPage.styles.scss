@@ -1,5 +1,6 @@
 .aboutUs {
   color: #202020;
+
   .inner-container {
     display: grid;
     grid-template-columns: 25% 75%;
@@ -22,9 +23,10 @@
 
       .list {
         padding-left: 2rem;
+
         li {
           margin-top: 1rem;
-          color: gray;
+          color: #202020;
         }
       }
     }
@@ -36,6 +38,16 @@
       padding-bottom: 2rem;
       padding-left: 2rem;
       padding-right: 4rem;
+
+      .para-title {
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+
+      .para {
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+      }
     }
   }
 }

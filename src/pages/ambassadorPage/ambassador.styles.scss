@@ -1,5 +1,6 @@
 .ambassador {
   color: #202020;
+
   .inner-container {
     display: grid;
     grid-template-columns: 25% 75%;
@@ -22,8 +23,10 @@
 
       .list {
         padding-left: 2rem;
+
         li {
           margin-top: 1rem;
+
           a {
             color: gray;
           }
@@ -39,6 +42,16 @@
       padding-left: 2rem;
       padding-right: 4rem;
 
+      .para-title {
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+
+      .details {
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+      }
+
       .form {
         width: 100%;
         padding-top: 1rem;
@@ -46,6 +59,7 @@
         .common {
           width: 100%;
           margin-bottom: 1rem;
+
           input,
           textarea {
             width: 100%;
@@ -53,6 +67,7 @@
             height: 2.5rem;
             padding: 1rem;
             font-size: 0.9rem;
+
             &::-webkit-scrollbar {
               display: none;
             }
@@ -75,6 +90,7 @@
 
         .form-submit-btn {
           text-align: right;
+
           .submit-btn {
             display: inline-block;
             padding: 0.7rem 3rem;

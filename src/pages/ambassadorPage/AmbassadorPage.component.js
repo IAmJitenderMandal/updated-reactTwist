@@ -37,9 +37,8 @@ export default function Ambassador() {
               accounts. An amazing chance for your followers to try our products
               for free! And much, much more… We believe that content is one key
               to success and below you find two pictures taken of two of our
-              lovely ambassadors; https://www.instagram.com/p/CDwbr1tjBox/
-              https://www.instagram.com/p/CBM6pSbH1Gg/ We are looking forward to
-              hear from you! Love, Twistshake Family
+              lovely ambassadors; We are looking forward to hear from you! Love,
+              Twistshake Family
             </div>
           </div>
           <div className="form">

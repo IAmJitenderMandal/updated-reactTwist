@@ -14,13 +14,18 @@
 
     .text-content {
       position: absolute;
-      text-align: left;
-      left: 10%;
+      text-align: center;
+      left: 50%;
       top: 50%;
+      background-color: #20202063;
+      transform: translateX(-50%);
+
       .title {
         font-size: 3rem;
-        color: #202020;
+        color: #fff;
         font-weight: 400;
+        text-transform: capitalize;
+        white-space: nowrap;
       }
     }
   }

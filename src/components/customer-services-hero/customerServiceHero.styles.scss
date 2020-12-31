@@ -20,6 +20,7 @@
       .welcome-text {
         font-size: 2rem;
       }
+
       .email {
         font-size: 1rem;
         padding-bottom: 1.5rem;
@@ -34,6 +35,15 @@
       display: flex;
       width: 100%;
       background-repeat: no-repeat;
+
+      .hero-text {
+        color: #fff;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 400;
+        display: none
+      }
     }
   }
 }

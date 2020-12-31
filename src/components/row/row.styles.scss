@@ -1,4 +1,17 @@
 .row {
+  .best-seller-row {
+    .owl-nav {
+      position: absolute;
+      top: -3rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #202020;
+      .owl-prev {
+        margin-right: 1rem;
+      }
+    }
+  }
+
   .title {
     display: flex;
     padding: 56px 36px 24px 24px;
@@ -26,6 +39,7 @@
 
     .twistshake-tableware,
     .twistshake-stroller,
+    .twistshake-pecifiers,
     .twistshake-freash-trendy {
       &.left-started {
         box-sizing: border-box;
@@ -39,13 +53,13 @@
           padding-right: 5rem;
 
           &.dark-content {
-            .content {
-              color: #202020 !important;
-              .btn {
-                background: #202020;
-                color: #fff;
-              }
-            }
+            // .content {
+            //   color: #202020 !important;
+            //   .btn {
+            //     background: #202020;
+            //     color: #fff;
+            //   }
+            // }
           }
         }
 

@@ -77,6 +77,20 @@ export default function Product(props) {
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   const { product } = productState;

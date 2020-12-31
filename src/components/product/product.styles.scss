@@ -11,7 +11,7 @@
       .product-imgs-container {
         position: relative;
         flex-grow: 5;
-        width: 70%;
+        width: 67%;
 
         .images {
           display: flex;
@@ -20,8 +20,9 @@
 
           .slick-slider {
             width: 100%;
+
             .slick-prev {
-              left: 90% !important;
+              left: 90%;
               z-index: 1;
               background-color: rgb(179, 179, 179);
               border-radius: 50%;
@@ -30,6 +31,7 @@
               align-items: center;
               top: 95%;
             }
+
             .slick-next {
               top: 95%;
               right: 3% !important;
@@ -37,6 +39,7 @@
               border-radius: 50%;
               background-color: rgb(179, 179, 179);
             }
+
             .slick-list {
               height: 100% !important;
 
@@ -55,7 +58,8 @@
                     height: 100% !important;
 
                     img {
-                      width: 100%;
+                      // width: 100%;
+                      margin: auto;
                       height: 100%;
                     }
                   }
@@ -81,7 +85,7 @@
 
       .product-details-container {
         flex-grow: 1;
-        width: 25%;
+        width: 33%;
         padding: 1.5rem 1rem 2rem 2rem;
 
         .product-title {
@@ -125,10 +129,12 @@
           .previous {
             text-decoration: line-through;
             margin-right: 1rem;
+            white-space: nowrap;
           }
 
           .latest {
             color: #e86464;
+            white-space: nowrap;
           }
         }
 
@@ -155,6 +161,7 @@
               background-color: #000000;
               color: #fff;
             }
+
             .disabled_btn {
               padding: 1.1rem 2.1rem;
               color: rgb(154, 154, 154);
@@ -196,6 +203,7 @@
         padding: 0rem 1.5rem 1.5rem 1.5rem;
         border-bottom: 1px solid #e9e9e9;
         display: flex;
+
         .left,
         .right {
           padding-top: 1.5rem;
@@ -260,10 +268,14 @@
             .previous {
               text-decoration: line-through;
               margin-right: 1rem;
+              white-space: nowrap;
+
             }
 
             .latest {
               color: #e86464;
+              white-space: nowrap;
+
             }
           }
 

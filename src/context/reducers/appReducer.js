@@ -1,7 +1,6 @@
-import { ADD_TO_CART } from "../action.types";
+import { ADD_TO_CART, SET_LINKS } from "../action.types";
 
 export const appReducer = (state, action) => {
-  console.log(state);
   switch (action.type) {
     case ADD_TO_CART:
       return {
@@ -10,11 +9,15 @@ export const appReducer = (state, action) => {
           ...state.cartProductsToSendInDB,
           { ...action.payload.productForDB },
         ],
+
         produtToShowInCart: [
           ...state.produtToShowInCart,
           { ...action.payload.productsToShow },
         ],
       };
+
+    case SET_LINKS:
+      return { ...state, navLinks: action.payload };
     default:
       return state;
   }

@@ -47,6 +47,21 @@ export default function MyAccounPage() {
         </div>
         <div className="right">
           <Route
+            path="/myAccount/"
+            exact
+            render={() => (
+              <>
+                <div className="account-description">
+                  Hello <span name="profile-name">john</span> from your account
+                  dashboard you can manage and view all the recent orders and
+                  your account details, manage your shipping and billing address
+                  details.
+                </div>
+                <Orders />
+              </>
+            )}
+          />
+          <Route
             path="/myAccount/dashboard"
             render={() => (
               <>

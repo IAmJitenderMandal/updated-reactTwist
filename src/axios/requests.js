@@ -6,4 +6,5 @@ export default {
   showAccordingTocategory: "/show-product-by-category/",
   getProductSliderMain: "/gallary-items/",
   getCategory: "/show-product-by-category/",
+  getCategories: "/admin/api/product-category",
 };

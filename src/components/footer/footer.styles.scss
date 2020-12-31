@@ -3,6 +3,7 @@
 
   .content {
     display: flex;
+    justify-content: space-between;
     padding: 4rem 4rem 6rem 4rem;
 
     .left-content {
@@ -101,6 +102,7 @@
                   color: #fff;
                   font-size: 1.2rem;
                   font-weight: 300;
+                  white-space: nowrap;
                 }
               }
             }
@@ -122,6 +124,7 @@
             margin-left: 1rem;
             color: #9a9a9a;
             font-weight: 300;
+            white-space: nowrap;
           }
         }
 
@@ -130,20 +133,6 @@
           color: #9a9a9a;
           text-align: right;
           font-weight: 300;
-
-          .language-label {
-            margin-right: 1rem;
-            font-size: 0.8rem;
-            color: #fff;
-          }
-
-          select {
-            background-color: transparent;
-            color: #9a9a9a;
-            border: none;
-            border-bottom: 1px solid #363636;
-            font-size: 0.8rem;
-          }
         }
       }
     }

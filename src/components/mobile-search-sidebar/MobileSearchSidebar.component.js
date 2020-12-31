@@ -9,10 +9,10 @@ import { NavContext } from "../../context/Context";
 
 export default function MobileSearchSidebar() {
   const { navState } = useContext(NavContext);
-  console.log(navState);
+
   return (
     <div
-      className={`mobile-menu-sidebar ${
+      className={`mobile-search-sidebar ${
         navState.searchSideBarMobile !== undefined
           ? navState.searchSideBarMobile
           : null

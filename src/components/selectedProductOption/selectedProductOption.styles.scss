@@ -11,9 +11,11 @@
   &.active {
     transform: translateX(0);
   }
+
   .slected-area-top {
     height: 90vh;
     overflow-y: scroll;
+
     .title {
       .title-text {
         padding: 2rem 2rem 0rem;
@@ -30,9 +32,19 @@
     }
 
     .products {
-      padding: 0rem 2rem 0rem;
       display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-content: space-around;
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      .custom-product-card {
+        width: 10rem;
+
+        .product-img {
+          height: 10rem;
+        }
+      }
     }
 
     .colors {
@@ -49,9 +61,11 @@
 
       .color-values {
         display: flex;
+        flex-wrap: wrap;
         margin-bottom: 2rem;
 
         .each-color {
+          margin-bottom: 0.5rem;
           margin-right: 1rem;
           border-radius: 50%;
           width: 30px;
@@ -63,13 +77,14 @@
           .color {
             width: 26px;
             height: 26px;
-            border-radius:50%;
+            border-radius: 50%;
           }
 
-          &.active{
+          &.active {
             border: 1px solid black;
           }
-          .inner-container{
+
+          .inner-container {
             position: relative;
             height: 100%;
             border: 1px solid white;
@@ -81,6 +96,7 @@
 
     .product-description {
       padding: 0rem 2rem 0rem;
+      margin-bottom: 4rem;
       color: #202020;
 
       .description-title {
@@ -109,6 +125,7 @@
     justify-content: space-between;
     width: 100%;
     border-top: 1px solid #ececec;
+    background-color: #fff;
 
     .product-name {
       display: flex;

@@ -6,6 +6,14 @@ import "./mediaqueries/main.styles.scss";
 // axios
 import axios from "axios";
 
+// owl crowsel imports
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
+// custom hooks
+import useViewPort from "./custom-hooks/useViewPort";
+
 // context imports
 import {
   SET_HOME_BEST_SELLER_DATA,
@@ -13,6 +21,8 @@ import {
   SET_CAT_TWO_DATA,
   SET_CAT_THREE_DATA,
   SET_CAT_FOUR_DATA,
+  DISABLE_MOBILE_MENU,
+  SET_LINKS,
 } from "./context/action.types";
 
 import {
@@ -54,12 +64,16 @@ import Login from "./components/login/Login.component";
 import Signup from "./components/signup/Signup.component";
 import MobileSearchSidebar from "./components/mobile-search-sidebar/MobileSearchSidebar.component";
 import MobileMenuSidebar from "./components/mobile-menu-sidebar/MobileMenuSidebar.component";
+import HeroBackgroundImg from "./components/imgBackgroundHero/HeroBackgroundImg.component";
 
 function App() {
+  const { width } = useViewPort();
+
   const [appState, appStateDispatch] = useReducer(appReducer, {
     cartProductsToSendInDB: [],
     produtToShowInCart: [],
     numberOfProductToAdd: 1,
+    navLinks: [],
   });
   const [cartState, cartStateDispatch] = useReducer(cartReducer, {
     cartProduct: null,
@@ -80,7 +94,32 @@ function App() {
     menuSidebarMobile: "",
   });
 
-  console.log(navState);
+  // owl responsive
+  const responsive = {
+    // breakpoint from 0 up
+    0: {
+      items: 1,
+      slideBy: 2,
+      nav: true,
+    },
+
+    360: {
+      slideBy: 1,
+      items: 2,
+      nav: true,
+    },
+    600: {
+      items: 2,
+      slideBy: 2,
+      nav: true,
+    },
+    1000: {
+      items: 4,
+      slideBy: 3,
+      nav: true,
+    },
+  };
+
   function fetchData() {
     const fetchBestSeller =
       "http://twistshake.ewtlive.in/admin/api/best-seller-products/4";
@@ -93,48 +132,66 @@ function App() {
     const fetchCat4 =
       "http://twistshake.ewtlive.in/admin/api/show-product-by-category/22/2";
 
+    const fetchNavLinks =
+      "http://twistshake.ewtlive.in/admin/api/product-category";
+
     const getBestSeller = axios.get(fetchBestSeller);
     const getCat1 = axios.get(fetchCat1);
     const getCat2 = axios.get(fetchCat2);
     const getCat3 = axios.get(fetchCat3);
     const getCat4 = axios.get(fetchCat4);
+    const getLinks = axios.get(fetchNavLinks);
 
-    axios.all([getBestSeller, getCat1, getCat2, getCat3, getCat4]).then(
-      axios.spread((...allData) => {
-        const bestSellerData = allData[0];
-        const dataCat1 = allData[1];
-        const dataCat2 = allData[2];
-        const dataCat3 = allData[3];
-        const dataCat4 = allData[4];
+    axios
+      .all([getBestSeller, getCat1, getCat2, getCat3, getCat4, getLinks])
+      .then(
+        axios.spread((...allData) => {
+          const bestSellerData = allData[0];
+          const dataCat1 = allData[1];
+          const dataCat2 = allData[2];
+          const dataCat3 = allData[3];
+          const dataCat4 = allData[4];
+          let links = allData[5];
+          let topNavLinks = [];
 
-        homeStateDispatch({
-          type: SET_HOME_BEST_SELLER_DATA,
-          payload: bestSellerData.data.products,
-        });
-        homeStateDispatch({
-          type: SET_CAT_ONE_DATA,
-          payload: dataCat1.data.product,
-        });
-        homeStateDispatch({
-          type: SET_CAT_TWO_DATA,
-          payload: dataCat2.data.product,
-        });
-        homeStateDispatch({
-          type: SET_CAT_THREE_DATA,
-          payload: dataCat3.data.product,
-        });
-        homeStateDispatch({
-          type: SET_CAT_FOUR_DATA,
-          payload: dataCat4.data.product,
-        });
-      })
-    );
+          links.data.menu.forEach((eachObj) => {
+            if (eachObj.menu_type === "Top Menu") {
+              topNavLinks = eachObj.product_categories;
+            }
+          });
+
+          homeStateDispatch({
+            type: SET_HOME_BEST_SELLER_DATA,
+            payload: bestSellerData.data.products,
+          });
+          homeStateDispatch({
+            type: SET_CAT_ONE_DATA,
+            payload: dataCat1.data.product,
+          });
+          homeStateDispatch({
+            type: SET_CAT_TWO_DATA,
+            payload: dataCat2.data.product,
+          });
+          homeStateDispatch({
+            type: SET_CAT_THREE_DATA,
+            payload: dataCat3.data.product,
+          });
+          homeStateDispatch({
+            type: SET_CAT_FOUR_DATA,
+            payload: dataCat4.data.product,
+          });
+
+          appStateDispatch({
+            type: SET_LINKS,
+            payload: topNavLinks,
+          });
+        })
+      );
   }
 
   // fetching data from product api
   useEffect(() => {
     fetchData();
-    console.log(homeState);
   }, []);
 
   return (
@@ -163,7 +220,7 @@ function App() {
                     >
                       {/* header starts */}
                       <Header>
-                        <VideoBackground>
+                        {/* <VideoBackground>
                           <h2 className="heading">Black Week</h2>
                           <Link to="/">
                             <Button
@@ -174,7 +231,21 @@ function App() {
                               <span>Buy Now</span>
                             </Button>
                           </Link>
-                        </VideoBackground>
+                        </VideoBackground> */}
+                        {appState.navLinks.length > 0 ? (
+                          <HeroBackgroundImg
+                            imgSrc={`${
+                              appState.navLinks.filter(
+                                (eachObj) =>
+                                  eachObj.urlString.toLowerCase() ===
+                                  "home".toLowerCase()
+                              )[0].categoryBG
+                            }`}
+                            text=""
+                          />
+                        ) : (
+                          <div className="bg-loading"> </div>
+                        )}
                       </Header>
                       {/* header ends */}
 
@@ -184,19 +255,28 @@ function App() {
 
                       {/* our best seller section starts */}
                       <Row title="Our best seller">
-                        {homeState.bestSellerProducts.length > 0
-                          ? homeState.bestSellerProducts.map(
-                              (product, index) => (
-                                <Link
-                                  to={`/product/${product.type}/${product.id}`}
-                                  className="product-link"
-                                  key={index}
-                                >
-                                  <Card eachProduct={product} />
-                                </Link>
+                        <OwlCarousel
+                          items={4}
+                          touchDrag={true}
+                          pullDrag={true}
+                          responsive={responsive}
+                          className="best-seller-row"
+                        >
+                          {homeState.bestSellerProducts.length > 0
+                            ? homeState.bestSellerProducts.map(
+                                (product, index) => (
+                                  <div className="item" key={index}>
+                                    <Link
+                                      to={`/product/${product.type}/${product.id}`}
+                                      className="product-link"
+                                    >
+                                      <Card eachProduct={product} />
+                                    </Link>
+                                  </div>
+                                )
                               )
-                            )
-                          : null}
+                            : null}
+                        </OwlCarousel>
                       </Row>
                       {/* our best seller section ends */}
 
@@ -276,7 +356,7 @@ function App() {
 
                       {/* twistshake storollers products section starts */}
                       <Row title="">
-                        <div className="twistshake-stroller left-started">
+                        <div className="twistshake-pecifiers left-started">
                           <div className="left-card dark-content">
                             <CategoryHeader
                               backgroundImage={
@@ -406,7 +486,7 @@ function App() {
                     </HomeContext.Provider>
                   </Fragment>
                 )}
-              />{" "}
+              />
               {/* <Route
               path="/campaign"
               render={() => (
@@ -416,15 +496,7 @@ function App() {
               )}
             /> */}
               <Route path="/pages/:category" render={() => <CategoryPage />} />
-              <Route path="/news" render={() => <div></div>} />
-              <Route path="/squeeze-bags" render={() => <div></div>} />
-              <Route path="/tableware" render={() => <div></div>} />
-              <Route path="/sippy-cups" render={() => <div></div>} />
-              <Route path="/baby-bottles" render={() => <div></div>} />
-              <Route path="/strollers" render={() => <div></div>} />
-              <Route path="/pacifiers-teethers" render={() => <div></div>} />
-              <Route path="/textiles" render={() => <div></div>} />
-              <Route path="/accessories" render={() => <div></div>} />
+
               <Route
                 path="/the-hunger-project"
                 render={() => (

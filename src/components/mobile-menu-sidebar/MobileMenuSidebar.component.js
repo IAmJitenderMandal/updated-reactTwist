@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./mobile-menu-sidebar.styles.scss";
 
 import { BiSearch } from "react-icons/bi";
@@ -8,6 +8,7 @@ import { NavContext } from "../../context/Context";
 
 export default function MobileMenuSidebar() {
   const { navState } = useContext(NavContext);
+  const [bestSellers, setBestSellers] = useState([1, 2, 3, 4]);
 
   return (
     <div
@@ -28,68 +29,38 @@ export default function MobileMenuSidebar() {
         <div className="best-selling-products">
           <div className="area-title">Our Best seller</div>
           <div className="products-container">
-            <Link to="/" className="product-link">
-              <div className="each-best-selling">
-                <div className="img-container">
-                  <div className="img"></div>
+            {bestSellers.map((product, index) => (
+              <Link to="/" className="link" key={index}>
+                <div className="each-best-selling">
+                  <div className="img-container">
+                    <div className="img"></div>
+                  </div>
+                  <div className="title-container">Baby Bottles</div>
                 </div>
-                <div className="title-container">Baby Bottles</div>
-              </div>
-            </Link>
-            <Link to="/" className="product-link">
-              <div className="each-best-selling">
-                <div className="img-container">
-                  <div className="img"></div>
-                </div>
-                <div className="title-container">Baby Bottles</div>
-              </div>
-            </Link>
-            <Link to="/" className="product-link">
-              <div className="each-best-selling">
-                <div className="img-container">
-                  <div className="img"></div>
-                </div>
-                <div className="title-container">Baby Bottles</div>
-              </div>
-            </Link>
-            <Link to="/" className="product-link">
-              <div className="each-best-selling">
-                <div className="img-container">
-                  <div className="img"></div>
-                </div>
-                <div className="title-container">Baby Bottles</div>
-              </div>
-            </Link>
-            <Link to="/" className="product-link">
-              <div className="each-best-selling">
-                <div className="img-container">
-                  <div className="img"></div>
-                </div>
-                <div className="title-container">Baby Bottles</div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
         </div>
 
         <div className="mobile-nav-links">
           <div className="list">
             <li className="link">
-              <Link to="/pages/baby-bottles" className="product-link">
+              <Link to="/pages/baby-bottles" className="link">
                 Baby Bottles
               </Link>
             </li>
             <li className="link">
-              <Link to="/pages/teether-and-peciefiers" className="product-link">
+              <Link to="/pages/teether-and-peciefiers" className="link">
                 Teethers & Peciefiers
               </Link>
             </li>
             <li className="link">
-              <Link to="/pages/sippy-cups" className="product-link">
+              <Link to="/pages/sippy-cups" className="link">
                 Sippy Cups
               </Link>
             </li>
             <li className="link">
-              <Link to="/pages/squeeze-bag" className="product-link">
+              <Link to="/pages/squeeze-bag" className="link">
                 Squeeze Bags
               </Link>
             </li>
@@ -99,33 +70,31 @@ export default function MobileMenuSidebar() {
           <div className="topbar-mobile-nav-links">
             <ul className="list">
               <li className="link">
-                <Link to="/Contact" className="product-link">
+                <Link to="/Contact" className="link">
                   Contact
                 </Link>
               </li>
               <li className="link">
-                <Link to="/Contact" className="product-link">
+                <Link to="/Contact" className="link">
                   About us
                 </Link>
               </li>
               <li className="link">
-                <Link to="/Contact" className="product-link">
+                <Link to="/Contact" className="link">
                   FAQ
                 </Link>
               </li>
               <li className="link">
-                <Link to="/Contact" className="product-link">
+                <Link to="/Contact" className="link">
                   Twistshake world
                 </Link>
               </li>
               <li className="link">
-                <Link to="/Contact" className="product-link">
+                <Link to="/Contact" className="link">
                   Ambassador
                 </Link>
               </li>
-              <li className="close-icon" onClick={() => {}}>
-                {/* <VscClose /> */}
-              </li>
+              <li className="close-icon" onClick={() => {}}></li>
             </ul>
           </div>
         </div>
